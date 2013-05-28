@@ -2,16 +2,6 @@
 class Japanyard_Form_Mypage extends Japanyard_ActionForm
 {
     var $form = array(
-        'name' => array(
-            'name' => 'name',
-            'required'  => true,
-            'type'      => VAR_TYPE_TEXT,
-        ),
-        'password' => array(
-            'name' => 'password',
-            'required'  => true,
-            'type'      => VAR_TYPE_TEXT,
-        ),
     );
 }
 
@@ -33,10 +23,6 @@ class Japanyard_Action_Mypage extends Japanyard_Authenticate
      */
     function prepare()
     {
-        if ($this->af->validate() > 0) {
-            return 'error';
-        }
-
         return null;
     }
 
