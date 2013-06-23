@@ -32,11 +32,19 @@ class Item
 
     function getItemsInfo($item_list) {
         $list = array();
+        $count = array();
         foreach ($item_list as $item) {
             $list[] = $item['item_id'];
+            $count[$item['item_id']] = $item['count'];
         }
         $list = implode(',',$list);
-        return $this->module_item->getItemsInfo($list);
+        $items_info  = $this->module_item->getItemsInfo($list);
+        $result = array();
+        foreach ($items_info as $item_info) {
+            $item_info['count'] = $count[$item_info['id']];
+            $result[] = $item_info;
+        }
+        return $result;
     }
 
     function login($user_info) {

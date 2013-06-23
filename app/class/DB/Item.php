@@ -20,6 +20,25 @@ class DBItem extends DBBase
         return $data;
     }
 
+    function getAllItemInfo() {
+        $sql = "select * from item" ;
+        $result =& $this->db->query($sql);
+        $data = $this->getResult($result);
+        return $data;
+    }
+
+    function insertItemInfo($name, $explain, $speciality) {
+        $sql = "insert into item (name,explanation,speciality) values ('${name}', '${explain}', ${speciality});" ;
+        $result =& $this->db->query($sql);
+        return $result;
+    }
+
+    function deleteItemInfo($id) {
+        $sql = "delete from item where id=${id}";
+        var_dump($sql);
+        $result =& $this->db->query($sql);
+        return $result;
+    }
     function getResult($result) {
         $result_data = array();
         $i = 0;
